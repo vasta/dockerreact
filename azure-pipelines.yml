@@ -5,6 +5,10 @@
 trigger:
 - main
 
+# Agent VM image name
+pool:
+  name: DemoAgentPool
+
 resources:
 - repo: self
 
@@ -16,9 +20,6 @@ variables:
   dockerfilePath: '**/Dockerfile'
   tag: '$(Build.BuildId)'
 
-  # Agent VM image name
-  pool:
-    name: DemoAgentPool
 
 stages:
 - stage: Build
