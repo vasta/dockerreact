@@ -6,7 +6,6 @@ trigger:
 - main
 
 pool:
-  # vmImage: $(vmImageName)
   name: DemoAgentPool
 
 resources:
@@ -19,7 +18,7 @@ variables:
   containerRegistry: 'democontregistry.azurecr.io'
   dockerfilePath: '**/Dockerfile'
   tag: '$(Build.BuildId)'
-  # vmImageName: 'ubuntu-latest'
+ 
 
 
 stages:
