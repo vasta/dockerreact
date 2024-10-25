@@ -37,3 +37,18 @@ stages:
         containerRegistry: $(dockerRegistryServiceConnection)
         tags: |
           $(tag)
+- stage: Deploy
+  displayName: Deploy
+  jobs:
+    - job: Deploy
+      displayName: Deploy
+      steps:
+      - task: AzureRmWebAppDeployment@4
+        inputs:
+          ConnectionType: 'AzureRM'
+          azureSubscription: 'Azure for Students(7365b563-db06-406f-97da-bb5f1dde1132)'
+          appType: 'webAppContainer'
+          WebAppName: 'demoreactdocker'
+          DockerNamespace: '$(containerRegistry)'
+          DockerRepository: '$(imageRepository)'
+          DockerImageTag: '$(tag)'
